@@ -1,6 +1,8 @@
 import { performAIScan } from './handlers/aiHandler';
 import { performURLScan } from './handlers/urlHandler';
-import { AIScanResult } from './components/aiResults/aiScanResultsComponent'
+import { AIScanResult } from './components/aiResults/aiScanResultsComponent';
+import { performEmailScan } from './handlers/emailHandler';
+import { EmailScanResult } from './components/emailResults/emailScanResultsComponent';
 import React, { useState } from 'react';
 import './App.css';
 
@@ -9,11 +11,13 @@ function App() {
     ai: 'ai',
     plagiarism: 'plagiarism',
     ai_plagiarism: 'ai_plagiarism',
-    url: 'url'
+    url: 'url',
+    email: 'email',
   }
 
   const [text, setText] = useState('');
   const [aiScanResult, setAIScanResult] = useState(null);
+  const [emailScanResult, setemailScanResult] = useState(null);
 
   const handleTextChange = (event) => {
     setText(event.target.value);
@@ -31,6 +35,11 @@ function App() {
         case actions.url:
           response = await performURLScan(text);
           setAIScanResult(response);
+          break;
+        case actions.email:
+          response = await performEmailScan(text);
+          setemailScanResult(response);
+          console.log(response);
           break;
         default:
           break;
@@ -66,8 +75,12 @@ function App() {
         <button className="button" onClick={() => handleButtonClick(actions.url)}>
           URL Scan
         </button>
+        <button className="button" onClick={() => handleButtonClick(actions.email)}>
+          Email Scan
+        </button>
       </div>
       {aiScanResult && <AIScanResult response={aiScanResult} />}
+      {emailScanResult && <EmailScanResult response={emailScanResult} />}
     </div>
   );
 }
