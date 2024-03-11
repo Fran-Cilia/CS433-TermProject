@@ -55,3 +55,15 @@
   font-size: 14px;
   margin-bottom: 20px;
 }
+
+.navbar {
+  background-color: #749ce7;
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+
+.navbar li {
+  display: inline;
+  padding: 10%;
+}

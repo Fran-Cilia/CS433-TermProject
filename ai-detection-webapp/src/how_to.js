@@ -23,33 +23,6 @@ function App() {
     setText(event.target.value);
   };
 
-  const handleButtonClick = async (action) => {
-    try {
-      let response;
-      
-      switch (action) {
-        case actions.ai:
-          response = await performAIScan(text);
-          setAIScanResult(response);
-          break;
-        case actions.url:
-          response = await performURLScan(text);
-          setAIScanResult(response);
-          break;
-        case actions.email:
-          response = await performEmailScan(text);
-          setemailScanResult(response);
-          console.log(response);
-          break;
-        default:
-          break;
-      }
-
-    } catch (e) {
-      console.error('Error:', e.message);
-    }
-  };
-
   return (
     <div className="App">
       <div className="navbar">
@@ -64,7 +37,7 @@ function App() {
       </div>
 
       <div className="header">
-        <h2 className="slogan">Bringing You the Truth, Because Lies are Just too Mainstream!</h2>
+        <h2 className="slogan">How To Use</h2>
         <p className="description">
           Whether you're verifying the source of emails, fact checking news articles, 
           double checking suspicious links or just curious about the origin piece of a text, we got you covered. 
@@ -72,25 +45,8 @@ function App() {
           to bring you the truth one scan at a time.
         </p>
       </div>
-      <textarea
-        className="big-text-box"
-        value={text}
-        onChange={handleTextChange}
-        placeholder="Enter your text here..."
-      />
-      <div className="button-container">
-        <button className="button" onClick={() => handleButtonClick(actions.ai)}>
-          AI Scan
-        </button>
-        <button className="button" onClick={() => handleButtonClick(actions.url)}>
-          URL Scan
-        </button>
-        <button className="button" onClick={() => handleButtonClick(actions.email)}>
-          Email Scan
-        </button>
-      </div>
-      {aiScanResult && <AIScanResult response={aiScanResult} />}
-      {emailScanResult && <EmailScanResult response={emailScanResult} />}
+
+ 
     </div>
   );
 }
