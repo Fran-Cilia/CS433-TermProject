@@ -3,6 +3,7 @@ import { performURLScan } from './handlers/urlHandler';
 import { AIScanResult } from './components/aiResults/aiScanResultsComponent';
 import { performEmailScan } from './handlers/emailHandler';
 import { EmailScanResult } from './components/emailResults/emailScanResultsComponent';
+import { LoadingSpinner } from './components/loadingSpinner/loadingSpinner'
 import React, { useState } from 'react';
 import './App.css';
 
@@ -18,6 +19,7 @@ function App() {
   const [text, setText] = useState('');
   const [aiScanResult, setAIScanResult] = useState(null);
   const [emailScanResult, setemailScanResult] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleTextChange = (event) => {
     setText(event.target.value);
@@ -26,6 +28,7 @@ function App() {
   const handleButtonClick = async (action) => {
     try {
       let response;
+      setIsLoading(true);
       
       switch (action) {
         case actions.ai:
@@ -47,11 +50,14 @@ function App() {
 
     } catch (e) {
       console.error('Error:', e.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="App">
+      {isLoading && <LoadingSpinner />}
       <div className="navbar">
         <nav>
           <h1 className="title">Authenticity Master</h1>
@@ -79,13 +85,13 @@ function App() {
         placeholder="Enter your text here..."
       />
       <div className="button-container">
-        <button className="button" onClick={() => handleButtonClick(actions.ai)}>
+        <button className="button" onClick={() => handleButtonClick(actions.ai)} disabled={isLoading}>
           AI Scan
         </button>
-        <button className="button" onClick={() => handleButtonClick(actions.url)}>
+        <button className="button" onClick={() => handleButtonClick(actions.url)} disabled={isLoading}>
           URL Scan
         </button>
-        <button className="button" onClick={() => handleButtonClick(actions.email)}>
+        <button className="button" onClick={() => handleButtonClick(actions.email)} disabled={isLoading}>
           Email Scan
         </button>
       </div>
