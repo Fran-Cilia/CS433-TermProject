@@ -6,7 +6,8 @@ export const performEmailScan = async (text) => {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
-            }
+            },
+            mode: 'no-cors',
         });
 
         if (!response.ok) {
@@ -18,7 +19,7 @@ export const performEmailScan = async (text) => {
         return responseData;
         
     } catch (e) {
-        console.error('Error performing AI scan:', e.message);
+        console.error('Error performing URL scan:', e.message);
         throw e;
     }
   };
