@@ -72,8 +72,8 @@ function App() {
       <div className="header">
         <h2 className="slogan">Bringing You the Truth, Because Lies are Just too Mainstream!</h2>
         <p className="description">
-          Whether you're verifying the source of emails, fact checking news articles, 
-          double checking suspicious links or just curious about the origin piece of a text, we got you covered. 
+          Whether you're verifying the source of emails 
+          double checking suspicious links or just curious about the origin of a piece of text, we got you covered. 
           With a powerful AI algorithms and plagiarism detection technology, we sift through the digital haystack 
           to bring you the truth one scan at a time.
         </p>
