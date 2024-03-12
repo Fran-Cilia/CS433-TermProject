@@ -56,9 +56,9 @@ function App() {
         <nav>
           <h1 className="title">Authenticity Master</h1>
           <ul>
-            <li><a href="App.js">Home</a></li>
-            <li><a href="how_to.js">How To Use</a></li>
-            <li><a href="contact.js">Contact</a></li>
+            <li><a href="App.js" className="nav-link">Home</a></li>
+            <li><a href="how_to.js" className="nav-link">How To Use</a></li>
+            <li><a href="contact.js" className="nav-link">Contact</a></li>
           </ul>
         </nav>
       </div>
