@@ -52,8 +52,12 @@
 }
 
 .description {
-  font-size: 14px;
+  font-size: 16px; /* Increase font size for better readability */
   margin-bottom: 20px;
+  color: #666; /* Slightly darken the color for contrast */
+  max-width: 600px; /* Limit the width of the description */
+  margin-left: auto; /* Align description to the left */
+  margin-right: auto; /* Align description to the right */
 }
 
 .navbar {
