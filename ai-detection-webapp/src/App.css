@@ -52,6 +52,53 @@
 }
 
 .description {
-  font-size: 14px;
+  font-size: 16px; /* Increase font size for better readability */
   margin-bottom: 20px;
+  color: #666; /* Slightly darken the color for contrast */
+  max-width: 600px; /* Limit the width of the description */
+  margin-left: auto; /* Align description to the left */
+  margin-right: auto; /* Align description to the right */
+}
+
+.navbar {
+  background-color: #212121; /* Dark gray background */
+  width: 100%;
+  position: fixed;
+  top: 0;
+  padding: 10px 0; /* Add padding to the top and bottom of the navbar */
+}
+
+.navbar nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px; /* Add padding to the left and right of the navbar */
+}
+
+.navbar .title {
+  margin: 0;
+  color: #ffffff; /* White text color */
+}
+
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline;
+  margin-right: 10px; /* Add some spacing between each link */
+}
+
+.navbar .nav-link {
+  color: #ffffff; /* White text color */
+  padding: 10px 20px; /* Add padding to the top and bottom of the links */
+  border: none;
+  border-radius: 5px; /* Add rounded corners */
+  text-decoration: none; /* Remove underline from links */
+  transition: background-color 0.3s ease; /* Add smooth transition effect */
+}
+
+.navbar .nav-link:hover {
+  background-color: #424242; /* Darker gray background color on hover */
 }
