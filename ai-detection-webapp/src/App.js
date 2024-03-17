@@ -1,8 +1,6 @@
 import { performAIScan } from './handlers/aiHandler';
 import { performURLScan } from './handlers/urlHandler';
 import { AIScanResult } from './components/aiResults/aiScanResultsComponent';
-import { performEmailScan } from './handlers/emailHandler';
-import { EmailScanResult } from './components/emailResults/emailScanResultsComponent';
 import { LoadingSpinner } from './components/loadingSpinner/loadingSpinner'
 import React, { useState } from 'react';
 import './App.css';
@@ -18,7 +16,6 @@ function App() {
 
   const [text, setText] = useState('');
   const [aiScanResult, setAIScanResult] = useState(null);
-  const [emailScanResult, setemailScanResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleTextChange = (event) => {
@@ -39,11 +36,6 @@ function App() {
           response = await performURLScan(text);
           setAIScanResult(response);
           break;
-        case actions.email:
-          response = await performEmailScan(text);
-          setemailScanResult(response);
-          console.log(response);
-          break;
         default:
           break;
       }
@@ -63,8 +55,6 @@ function App() {
           <h1 className="title">Authenticity Master</h1>
           <ul>
             <li><a href="App.js" className="nav-link">Home</a></li>
-            <li><a href="how_to.js" className="nav-link">How To Use</a></li>
-            <li><a href="contact.js" className="nav-link">Contact</a></li>
           </ul>
         </nav>
       </div>
@@ -91,12 +81,8 @@ function App() {
         <button className="button" onClick={() => handleButtonClick(actions.url)} disabled={isLoading}>
           URL Scan
         </button>
-        <button className="button" onClick={() => handleButtonClick(actions.email)} disabled={isLoading}>
-          Email Scan
-        </button>
       </div>
       {aiScanResult && <AIScanResult response={aiScanResult} />}
-      {emailScanResult && <EmailScanResult response={emailScanResult} />}
     </div>
   );
 }
